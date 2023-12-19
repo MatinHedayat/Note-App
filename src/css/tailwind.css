@@ -6,21 +6,33 @@
 
 @layer base {
   body {
-    @apply bg-aliceblue;
+    @apply bg-aliceblue select-none;
+  }
+
+  button {
+    @apply outline-none;
   }
 }
 
 @layer components {
   .page {
-    @apply max-w-screen-lg px-4 py-6 mx-auto;
-    /* background-color: rgba(255, 0, 0, 0.439); */
+    @apply max-w-4xl min-h-screen relative px-4 py-6 mx-auto overflow-hidden;
+    /* background-color: red; */
+  }
+
+  .plus-shadow {
+    box-shadow: 0 0 3rem 1rem rgba(0, 0, 0, 0.3);
+  }
+
+  .menu-shadow {
+    box-shadow: 2rem 1rem 3rem rgba(0, 0, 0, 0.3);
   }
 }
 
 /* ============= SCROLL-BAR ============= */
 
 ::-webkit-scrollbar {
-  width: 0.2rem;
+  width:0.3rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -28,6 +40,6 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(2, 132, 197, 0.4);
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
 }
