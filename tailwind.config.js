@@ -9,6 +9,20 @@ export default {
       colors: {
         aliceblue: "aliceblue",
       },
+      keyframes: {
+        rotateOpacity: {
+          "0%": { opacity: '0', transform: 'rotate(45deg)' },
+          "100%": { opacity: '1', transform: 'rotate(0)' },
+        },
+        opacity: {
+          "0%": { opacity: '0' },
+          "100%": { opacity: '1'  },
+        }
+      },
+      animation: {
+        rotateOpacity: 'rotateOpacity 0.3s ease-in-out 1',
+        opacity: 'opacity 0.2s ease-in-out 1',
+      }
     },
   },
   plugins: [],
