@@ -1,5 +1,11 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { ADD_NOTE, DELETE_NOTE, EDIT_NOTE, UPDATE_NOTE } from "./actionTypes";
+import {
+  ADD_NOTE,
+  CLEAR_NOTES,
+  DELETE_NOTE,
+  EDIT_NOTE,
+  UPDATE_NOTE,
+} from "./actionTypes";
 
 const notesReducer = (notes, { type, payload }) => {
   switch (type) {
@@ -16,6 +22,12 @@ const notesReducer = (notes, { type, payload }) => {
       return notes.map((note) =>
         note.id === payload ? { ...note, isMarked: !note.isMarked } : note
       );
+
+    case CLEAR_NOTES:
+      return [];
+
+    default:
+      return notes;
   }
 };
 
