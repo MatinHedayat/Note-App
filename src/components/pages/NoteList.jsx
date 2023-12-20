@@ -1,15 +1,12 @@
 import { HiMenuAlt2 } from "react-icons/hi";
 import { FaRegUserCircle } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   TbSortAscendingLetters,
   TbSortDescendingLetters,
 } from "react-icons/tb";
 import { Link } from "react-router-dom";
-import {
-  useNotesContext,
-  useNotesDispatchContext,
-} from "../../contexts/Provider";
+import { useNotesContext } from "../../contexts/Provider";
 import NoteItem from "../NoteItem";
 import CreateNoteBtn from "../CreateNoteBtn";
 import BackToTopBtn from "../BackToTopBtn";
@@ -17,37 +14,44 @@ import Menu from "../Menu";
 
 export default function NoteList() {
   const notes = useNotesContext();
-  const dispatch = useNotesDispatchContext();
+  const [formattedNotes, setFormattedNotes] = useState(notes);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleCloseMenu = () => setIsMenuOpen(false);
 
   const [searchValue, setSearchValue] = useState("");
+  const handleSearchingNotes = () => {
+    setFormattedNotes(
+      notes.filter((note) => {
+        const filterCondition =
+          note.title.toLowerCase().match(searchValue.toLowerCase()) ||
+          note.desc.toLowerCase().match(searchValue.toLowerCase());
+
+        if (filterCondition) return note;
+      })
+    );
+  };
+
+  useEffect(handleSearchingNotes, [searchValue]);
+
   const [sortIsEarliest, setSortIsEarliest] = useState(true);
+  useEffect(() => {
+    if (sortIsEarliest) {
+      setFormattedNotes(
+        [...notes].sort(
+          (a, b) => new Date(a.creationTime) - new Date(b.creationTime)
+        )
+      );
+    }
 
-  // let sortedNotes = testNotes;
-  // !sortIsEarliest
-  //   ? (sortedNotes = [...testNotes].sort(
-  //       (a, b) => new Date(a.creationTime) - new Date(b.creationTime)
-  //     ))
-  //   : sortedNotes;
-  //   const result = [...testNotes];
-
-  //   let sortedNotes = result;
-
-  //   if (sortIsEarliest)
-  //   console.log('first')
-  // sortedNotes = [...testNotes].sort(
-  //   (a, b) => new Date(a.creationTime) - new Date(b.creationTime)
-  //   ); // b -a  => a > b ? -1 : 1
-
-  //   if (!sortIsEarliest)
-  //   console.log('tow')
-  //     sortedNotes = [...testNotes].sort(
-  //       (a, b) => new Date(b.creationTime) - new Date(a.creationTime)
-  //     ); // b -a  => a > b ? -1 : 1
-
-  // console.log(sortedNotes);
+    if (!sortIsEarliest) {
+      setFormattedNotes(
+        [...notes].sort(
+          (a, b) => new Date(b.creationTime) - new Date(a.creationTime)
+        )
+      );
+    }
+  }, [sortIsEarliest]);
 
   return (
     <div className='page'>
@@ -64,7 +68,10 @@ export default function NoteList() {
           type='text'
           value={searchValue}
           placeholder='Search ...'
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+            handleSearchingNotes();
+          }}
         />
 
         <div className='h-full flex'>
@@ -98,10 +105,24 @@ export default function NoteList() {
       </div>
 
       <div className='grid gap-x-2 gap-y-4 mt-8 sm:grid-cols-2'>
-        {notes.map((note, index) => (
-          <NoteItem key={note.id} note={note} index={index} />
-        ))}
+        {notes.length
+          ? formattedNotes.map((note, index) => (
+              <NoteItem key={note.id} note={note} index={index} />
+            ))
+          : ""}
       </div>
+
+      {!notes.length ? (
+        <div className='text-sm text-center block w-full text-slate-800 mt-8'>
+          Note list is empty ...
+        </div>
+      ) : (
+        !formattedNotes.length && (
+          <div className='text-sm text-center block w-full text-slate-800 mt-8'>
+            No results found ...
+          </div>
+        )
+      )}
 
       <Menu isMenuOpen={isMenuOpen} handleCloseMenu={handleCloseMenu} />
       <CreateNoteBtn />
