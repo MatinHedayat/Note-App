@@ -32,14 +32,6 @@ export default [
     type: "link",
   },
   {
-    title: "History",
-    icon: <FaHistory />,
-    miniSize: "md",
-    size: "xl",
-    path: "/history",
-    type: "link",
-  },
-  {
     title: "Dark Theme",
     icon: <MdOutlineDarkMode />,
     miniSize: "xl",

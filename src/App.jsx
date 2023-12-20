@@ -20,7 +20,6 @@ export default function App() {
         <Route path='user' element={<User />} />
         <Route path='login' element={<Login />} />
         <Route path='hint' element={<Hint />} />
-        <Route path='history' element={<History />} />
         <Route path='bookmarks' element={<Bookmarks />} />
       </Routes>
     </>
