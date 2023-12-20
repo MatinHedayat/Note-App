@@ -10,7 +10,6 @@ import {
   useNotesContext,
   useNotesDispatchContext,
 } from "../../contexts/Provider";
-import testNotes from "../../data/testNotes";
 import NoteItem from "../NoteItem";
 import CreateNoteBtn from "../CreateNoteBtn";
 import BackToTopBtn from "../BackToTopBtn";
@@ -99,7 +98,7 @@ export default function NoteList() {
       </div>
 
       <div className='grid gap-x-2 gap-y-4 mt-8 sm:grid-cols-2'>
-        {testNotes.map((note, index) => (
+        {notes.map((note, index) => (
           <NoteItem key={note.id} note={note} index={index} />
         ))}
       </div>
