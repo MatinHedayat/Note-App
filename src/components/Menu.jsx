@@ -6,7 +6,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { useNotesDispatchContext } from "../contexts/NotesProvider";
 import { CLEAR_NOTES } from "../contexts/actionTypes";
-import { useUserContext } from '../contexts/UserProvider';
+import { useUserContext } from "../contexts/UserProvider";
 
 export default function Menu({ isMenuOpen, handleCloseMenu }) {
   const menuCN = isMenuOpen ? "left-0 menu-shadow" : "-left-96 shadow-none";
@@ -43,7 +43,7 @@ export default function Menu({ isMenuOpen, handleCloseMenu }) {
 
   return (
     <div
-      className={`bg-slate-700 w-10/12 max-w-sm pb-40 absolute z-50 top-0 rounded-ee-[10rem] rounded-es-3xl duration-500 ${menuCN}`}
+      className={`bg-slate-700 w-10/12 max-w-sm pb-28 absolute z-50 top-0 rounded-ee-[10rem] rounded-es-3xl duration-500 sm:pb-40 ${menuCN}`}
       ref={menuRef}
     >
       <Link to='/user'>
@@ -70,7 +70,7 @@ export default function Menu({ isMenuOpen, handleCloseMenu }) {
         <IoClose className='text-xl text-slate-300/70' />
       </button>
 
-      <div className='flex flex-col gap-y-2 mt-20'>
+      <div className='flex flex-col gap-y-2 mt-16'>
         {menuItems.map((item) => {
           if (item.type === "link") {
             return (
