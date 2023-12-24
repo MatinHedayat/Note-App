@@ -38,8 +38,6 @@ const initialState = JSON.parse(localStorage.getItem("notes")) || [];
 
 export default function Provider({ children }) {
   const [notes, dispatch] = useReducer(notesReducer, initialState);
-  console.log(notes);
-
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);

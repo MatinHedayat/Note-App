@@ -10,7 +10,6 @@ const initialState = JSON.parse(localStorage.getItem("user")) || {
 
 export default function UserProvider({ children }) {
   const [user, setUser] = useState(initialState);
-  console.log(user);
 
   useEffect(() => localStorage.setItem("user", JSON.stringify(user)), [user]);
 
