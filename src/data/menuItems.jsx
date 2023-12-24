@@ -47,13 +47,5 @@ export default [
     size: "2xl",
     path: "",
     type: "",
-  },
-  {
-    title: "Hint",
-    icon: <IoMdHelpCircleOutline />,
-    miniSize: "xl",
-    size: "2xl",
-    path: "/hint",
-    type: "link",
-  },
+  }
 ];
