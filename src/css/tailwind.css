@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-aliceblue select-none;
+    @apply bg-aliceblue select-none dark:bg-slate-800 transition-colors;
   }
 
   button {
@@ -16,30 +16,25 @@
 
 @layer components {
   .page {
-    @apply max-w-4xl min-h-screen relative px-4 py-6 mx-auto overflow-hidden;
-    /* background-color: red; */
+    @apply bg-aliceblue max-w-4xl min-h-screen relative px-4 py-6 mx-auto overflow-hidden dark:bg-slate-800 transition-colors;
   }
 
   .plus-shadow {
-    box-shadow: 0 0 3rem 1rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.5);
   }
 
   .menu-shadow {
-    box-shadow: 2rem 1rem 3rem rgba(0, 0, 0, 0.3);
+    box-shadow: 2rem 1rem 3rem rgba(0, 0, 0, 0.2);
   }
 }
 
 /* ============= SCROLL-BAR ============= */
 
 ::-webkit-scrollbar {
-  width:0.3rem;
-}
-
-::-webkit-scrollbar-track {
-  border-radius: 1rem;
+  width: 0.4rem;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.4);
+  @apply bg-slate-700;
   border-radius: 1rem;
 }
