@@ -86,7 +86,7 @@ export default function AddNote() {
 
       <div className='flex items-center justify-between px-2 mb-4 sm:mb-6'>
         <button
-          className='bg-slate-200 flex items-center gap-x-2 text-slate-600 text-left text-sm font-medium px-3 py-2 rounded-lg sm:text-base sm:font-semibold sm:px-4'
+          className='bg-slate-300 flex items-center gap-x-2 text-slate-600 text-left text-sm font-medium px-3 py-2 rounded-lg sm:text-base sm:font-semibold sm:px-4'
           onClick={() => setIsMarked(!isMarked)}
         >
           {isMarked ? (

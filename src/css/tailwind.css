@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-aliceblue select-none dark:bg-slate-800 transition-colors;
+    @apply bg-slate-200 select-none dark:bg-slate-800 transition-colors;
   }
 
   button {
@@ -16,7 +16,7 @@
 
 @layer components {
   .page {
-    @apply bg-aliceblue max-w-4xl min-h-screen relative px-4 py-6 mx-auto overflow-hidden dark:bg-slate-800 transition-colors;
+    @apply bg-slate-200 max-w-4xl min-h-screen relative px-4 py-6 mx-auto overflow-hidden dark:bg-slate-800 transition-colors;
   }
 
   .plus-shadow {
