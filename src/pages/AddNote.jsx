@@ -1,24 +1,24 @@
-import { useState } from "react";
-import backgrounds from "../data/backgrounds";
-import { HiMenuAlt2 } from "react-icons/hi";
-import Menu from "../components/Menu";
-import { FaCheck } from "react-icons/fa6";
-import { RiBookmarkFill, RiBookmarkLine } from "react-icons/ri";
-import { useNotesDispatchContext } from "../contexts/NotesProvider";
-import { ADD_NOTE } from "../contexts/actionTypes";
-import { useNavigate } from "react-router-dom";
-import { BiLeftArrowAlt } from "react-icons/bi";
-import { motion } from "framer-motion";
+import { useState } from 'react';
+import backgrounds from '../data/backgrounds';
+import { HiMenuAlt2 } from 'react-icons/hi';
+import Menu from '../components/Menu';
+import { FaCheck } from 'react-icons/fa6';
+import { RiBookmarkFill, RiBookmarkLine } from 'react-icons/ri';
+import { useNotesDispatchContext } from '../contexts/NotesProvider';
+import { ADD_NOTE } from '../contexts/actionTypes';
+import { useNavigate } from 'react-router-dom';
+import { BiLeftArrowAlt } from 'react-icons/bi';
+import { motion } from 'framer-motion';
 
 export default function AddNote() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleCloseMenu = () => setIsMenuOpen(false);
 
   const [isMarked, setIsMarked] = useState(false);
-  const [color, setColor] = useState("bg-slate-500");
+  const [color, setColor] = useState('bg-slate-500');
 
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  const [title, setTitle] = useState('');
+  const [desc, setDesc] = useState('');
 
   const dispatch = useNotesDispatchContext();
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ export default function AddNote() {
   return (
     <motion.div
       className='page'
-      initial={{ opacity: 0, y: "-10%" }}
+      initial={{ opacity: 0, y: '-10%' }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
@@ -75,7 +75,7 @@ export default function AddNote() {
       </div>
 
       <div className='flex items-center mt-12 mb-10 sm:mb-12'>
-        <h2 className='w-3/5 text-2xl capitalize font-bold pr-4 ss:text-3xl dark:text-aliceblue sm:text-5xl'>
+        <h2 className='w-3/5 text-3xl capitalize font-bold pr-6 ss:text-4xl dark:text-aliceblue sm:text-5xl'>
           Create and design your note
         </h2>
 
@@ -91,22 +91,30 @@ export default function AddNote() {
         >
           {isMarked ? (
             <RiBookmarkFill
-              className={`text-xl sm:text-2xl ${isMarked ? "animate-opacity" : ""}`}
+              className={`text-xl sm:text-2xl ${
+                isMarked ? 'animate-opacity' : ''
+              }`}
             />
           ) : (
             <RiBookmarkLine
-              className={`text-xl sm:text-2xl ${isMarked ? "" : "animate-opacity"}`}
+              className={`text-xl sm:text-2xl ${
+                isMarked ? '' : 'animate-opacity'
+              }`}
             />
           )}
-          {isMarked ? "Bookmarked" : "Not Marked"}
+          {isMarked ? 'Bookmarked' : 'Not Marked'}
         </button>
 
-        <div className='max-w-[40%] flex flex-wrap items-center justify-end gap-2 ss:max-w-none sm:gap-3'>
+        <div className='max-w-[50%] flex flex-wrap items-center justify-end gap-2 ss:max-w-none sm:gap-3'>
           {backgrounds.map((item) => (
             <button
               className={`border-4 border-aliceblue/50 rounded-lg ${
                 item.color
-              } ${color === item.color ? "w-6 h-6 sm:w-10 sm:h-10" : "w-5 h-5 sm:w-8 sm:h-8"}`}
+              } ${
+                color === item.color
+                  ? 'w-7 h-7 sm:w-10 sm:h-10'
+                  : 'w-6 h-6 sm:w-8 sm:h-8'
+              }`}
               key={item.id}
               onClick={() => setColor(item.color)}
             ></button>
