@@ -12,7 +12,8 @@
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 
 ## Description
-With this application, you can save as many notes as you want and have features such as editing, changing the background color, marking a particular note along with changing the theme of the program. There are other features such as the ability to search between notes and sort them.
+This program is a simple program to save your notes. You can add as many notes as you want to this program. When you don't need a note, you can delete it from your list of notes, or if a note needs changes, you can edit it. You can bookmark any note you want according to your needs and have it separately from the list of notes in the list of bookmarks. You can also use the ability to sort notes and search for a specific note in the list of notes. Other features such as setting the background color of each note as well as changing the general theme of the program have been considered for you.
+To make this program, technologies such as React, Context-API, Tailwindcss and React-router have been used.
 
 I hope you enjoy and look forward to your contributions!
 
