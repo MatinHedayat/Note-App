@@ -1,11 +1,11 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from 'react';
 import {
   ADD_NOTE,
   CLEAR_NOTES,
   DELETE_NOTE,
   EDIT_NOTE,
   UPDATE_NOTE,
-} from "./actionTypes";
+} from './actionTypes';
 
 const notesReducer = (notes, { type, payload }) => {
   switch (type) {
@@ -34,12 +34,12 @@ const notesReducer = (notes, { type, payload }) => {
 const NotesContext = createContext();
 const NotesDispatchContext = createContext();
 
-const initialState = JSON.parse(localStorage.getItem("notes")) || [];
+const initialState = JSON.parse(localStorage.getItem('notes')) || [];
 
 export default function Provider({ children }) {
   const [notes, dispatch] = useReducer(notesReducer, initialState);
   useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
+    localStorage.setItem('notes', JSON.stringify(notes));
   }, [notes]);
 
   return (

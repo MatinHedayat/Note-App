@@ -1,18 +1,19 @@
-import { HiMenuAlt2 } from "react-icons/hi";
-import { FaRegUserCircle } from "react-icons/fa";
-import { useState } from "react";
+import NoteItem from '../components/NoteItem';
+import CreateNoteBtn from '../components/CreateNoteBtn';
+import BackToTopBtn from '../components/BackToTopBtn';
+import Menu from '../components/Menu';
+import { useNotesContext } from '../contexts/NotesProvider';
+import { useUserContext } from '../contexts/UserProvider';
+
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { FaRegUserCircle } from 'react-icons/fa';
+import { HiMenuAlt2 } from 'react-icons/hi';
 import {
   TbSortAscendingLetters,
   TbSortDescendingLetters,
-} from "react-icons/tb";
-import { Link } from "react-router-dom";
-import { useNotesContext } from "../contexts/NotesProvider";
-import NoteItem from "../components/NoteItem";
-import CreateNoteBtn from "../components/CreateNoteBtn";
-import BackToTopBtn from "../components/BackToTopBtn";
-import Menu from "../components/Menu";
-import { useUserContext } from "../contexts/UserProvider";
-import { motion } from "framer-motion";
+} from 'react-icons/tb';
 
 export default function NoteList() {
   const notes = useNotesContext();
@@ -21,8 +22,7 @@ export default function NoteList() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleCloseMenu = () => setIsMenuOpen(false);
 
-  const [searchValue, setSearchValue] = useState("");
-
+  const [searchValue, setSearchValue] = useState('');
   const [sortIsEarliest, setSortIsEarliest] = useState(true);
 
   if (sortIsEarliest) {
@@ -35,7 +35,7 @@ export default function NoteList() {
     <>
       <motion.div
         className='page mb-12'
-        initial={{ opacity: 0, y: "-10%" }}
+        initial={{ opacity: 0, y: '-10%' }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
@@ -65,13 +65,13 @@ export default function NoteList() {
               {sortIsEarliest ? (
                 <TbSortAscendingLetters
                   className={`text-2xl text-aliceblue ${
-                    sortIsEarliest ? "animate-rotateOpacity" : ""
+                    sortIsEarliest ? 'animate-rotateOpacity' : ''
                   }`}
                 />
               ) : (
                 <TbSortDescendingLetters
                   className={`text-2xl text-aliceblue ${
-                    sortIsEarliest ? "" : "animate-rotateOpacity"
+                    sortIsEarliest ? '' : 'animate-rotateOpacity'
                   }`}
                 />
               )}
@@ -96,7 +96,7 @@ export default function NoteList() {
         <div className='flex flex-col gap-y-6 mt-8 sm:items-center'>
           {notes
             .filter((note) =>
-              searchValue === ""
+              searchValue === ''
                 ? note
                 : note.title.toLowerCase().includes(searchValue) ||
                   note.desc.toLowerCase().includes(searchValue)
@@ -114,6 +114,7 @@ export default function NoteList() {
 
         <Menu isMenuOpen={isMenuOpen} handleCloseMenu={handleCloseMenu} />
       </motion.div>
+
       <BackToTopBtn />
       <CreateNoteBtn />
     </>
